@@ -5,7 +5,18 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+//static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+//static char *font = "OCRA:pixelsize=22:antialias=true:autohint=true";
+static char *font = "UbuntuMono Nerd Font:pixelsize=22:antialias=true:autohint=true";
+//static char *font = "SF Mono:pixelsize=22:antialias=true:autohint=true"
+//static char *font = "JetBrainsMono:pixelsize=22:antialias=true:autohint=true";
+//static char *font = "Terminus:pixelsize=22:antialias=true:autohint=true";
+static char *font2 = {"JoyPixels:pixelsize=10:antialias=true:autohint=true"};
+
+static char *font3 = "Spoqa Han Sans Neo:pixelsize=18:antialias=true:autohint=true";
+
+//"Noto Color Emoji:pixelsize=10:antialias=true:autohint=true",
+//	"Symbola:pixelsize=10:antialias=true:autohint=true"};
 static int borderpx = 2;
 
 /*
@@ -168,22 +179,24 @@ static unsigned int defaultattr = 11;
  */
 static uint forcemousemod = ShiftMask;
 
+/* Internal keyboard shortcuts. */
+#define MODKEY Mod1Mask
+#define TERMMOD (ControlMask|ShiftMask)
+
 /*
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
+	{ MODKEY,               Button4, kscrollup,      {.i = 1} },
+	{ MODKEY,               Button5, kscrolldown,    {.i = 1} },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
 	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
 };
-
-/* Internal keyboard shortcuts. */
-#define MODKEY Mod1Mask
-#define TERMMOD (ControlMask|ShiftMask)
 
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
@@ -199,6 +212,14 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+//setting vim and arrow keys to scroll line one by one pressing alt
+	{ MODKEY,		XK_k,		kscrollup,      {.i = 1} },
+	{ MODKEY,		XK_Up,		kscrollup,      {.i = 1} },
+	{ MODKEY,		XK_j,		kscrolldown,    {.i = 1} },
+	{ MODKEY,		XK_Down,	kscrolldown,	{.i = 1} },
+//scroll thru page wise
+	{ MODKEY,		XK_Page_Up,	kscrollup,	{.i = -1} },
+	{ MODKEY,		XK_Page_Down,	kscrolldown,	{.i = -1} },
 };
 
 /*
@@ -470,3 +491,4 @@ static char ascii_printable[] =
 	" !\"#$%&'()*+,-./0123456789:;<=>?"
 	"@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_"
 	"`abcdefghijklmnopqrstuvwxyz{|}~";
+
