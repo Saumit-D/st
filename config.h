@@ -5,18 +5,25 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
+
 //static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
 //static char *font = "OCRA:pixelsize=22:antialias=true:autohint=true";
 static char *font = "UbuntuMono Nerd Font:pixelsize=22:antialias=true:autohint=true";
 //static char *font = "SF Mono:pixelsize=22:antialias=true:autohint=true"
 //static char *font = "JetBrainsMono:pixelsize=22:antialias=true:autohint=true";
 //static char *font = "Terminus:pixelsize=22:antialias=true:autohint=true";
-static char *font2 = {"JoyPixels:pixelsize=10:antialias=true:autohint=true"};
 
-static char *font3 = "Spoqa Han Sans Neo:pixelsize=18:antialias=true:autohint=true";
 
+/* Spare fonts */
+static char *font2[] = {
+		"JoyPixels:pixelsize=22:antialias=true:autohint=true",
+		"Spoqa Han Sans Neo:pixelsize=18:antialias=true:autohint=true"};
 //"Noto Color Emoji:pixelsize=10:antialias=true:autohint=true",
-//	"Symbola:pixelsize=10:antialias=true:autohint=true"};
+//"Symbola:pixelsize=10:antialias=true:autohint=true"};
+
+/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true",*/
+/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
+
 static int borderpx = 2;
 
 /*
@@ -104,6 +111,9 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
+/* bg opacity */
+float alpha = 0.8;
+
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
@@ -131,6 +141,7 @@ static const char *colorname[] = {
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
+	"black",
 };
 
 
@@ -139,7 +150,7 @@ static const char *colorname[] = {
  * foreground, background, cursor, reverse cursor
  */
 unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
+unsigned int defaultbg = 258;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
@@ -198,6 +209,7 @@ static MouseShortcut mshortcuts[] = {
 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
 };
 
+
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
 	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
@@ -213,14 +225,15 @@ static Shortcut shortcuts[] = {
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 //setting vim and arrow keys to scroll line one by one pressing alt
-	{ MODKEY,		XK_k,		kscrollup,      {.i = 1} },
-	{ MODKEY,		XK_Up,		kscrollup,      {.i = 1} },
+	{ MODKEY,		XK_k,	     	kscrollup,      {.i = 1} },
+	{ MODKEY,		XK_Up,	     	kscrollup,      {.i = 1} },
 	{ MODKEY,		XK_j,		kscrolldown,    {.i = 1} },
 	{ MODKEY,		XK_Down,	kscrolldown,	{.i = 1} },
 //scroll thru page wise
-	{ MODKEY,		XK_Page_Up,	kscrollup,	{.i = -1} },
-	{ MODKEY,		XK_Page_Down,	kscrolldown,	{.i = -1} },
+	{ MODKEY,		XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ MODKEY,		XK_Page_Down,   kscrolldown,    {.i = -1} },
 };
+
 
 /*
  * Special keys (change & recompile st.info accordingly)
@@ -491,4 +504,3 @@ static char ascii_printable[] =
 	" !\"#$%&'()*+,-./0123456789:;<=>?"
 	"@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_"
 	"`abcdefghijklmnopqrstuvwxyz{|}~";
-
