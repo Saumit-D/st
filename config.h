@@ -16,7 +16,7 @@ static char *font = "UbuntuMono Nerd Font:pixelsize=22:antialias=true:autohint=t
 
 /* Spare fonts */
 static char *font2[] = {
-		"JoyPixels:pixelsize=22:antialias=true:autohint=true",
+		"JoyPixels:pixelsize=19:antialias=true:autohint=true",
 		"Spoqa Han Sans Neo:pixelsize=18:antialias=true:autohint=true"};
 //"Noto Color Emoji:pixelsize=10:antialias=true:autohint=true",
 //"Symbola:pixelsize=10:antialias=true:autohint=true"};
