@@ -15,8 +15,8 @@ static char *font = "UbuntuMono Nerd Font:pixelsize=22:antialias=true:autohint=t
 
 
 /* Spare fonts */
-static char *font2[] = {"Spoqa Han Sans Neo:pixelsize=16:antialias=true:autohint=true",
-                        "Joypixels:pixelsize=16:antialias=true:autohint=true"};
+static char *font2[] = {"Spoqa Han Sans Neo:pixelsize=15:antialias=true:autohint=true",
+                        "Joypixels:pixelsize=14:antialias=true:autohint=true"};
 //"Noto Color Emoji:pixelsize=10:antialias=true:autohint=true",
 //"Symbola:pixelsize=10:antialias=true:autohint=true"};
 
@@ -189,6 +189,11 @@ static uint forcemousemod = ShiftMask;
 #define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
 
+static char *openurlcmd[] = { "/bin/sh", "-c", "st-urlhandler -o", "externalpipe", NULL };
+static char *copyurlcmd[] = { "/bin/sh", "-c", "st-urlhandler -c", "externalpipe", NULL };
+static char *copyoutput[] = { "/bin/sh", "-c", "st-copyout", "externalpipe", NULL };
+
+
 /*
  * Xresources preferences to load at startup
  */
@@ -231,8 +236,8 @@ ResourcePref resources[] = {
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
-	{ MODKEY,		Button4, kscrollup,      {.i = 1} },
-	{ MODKEY,		Button5, kscrolldown,    {.i = 1} },
+	{ MODKEY,               Button4, kscrollup,      {.i = 1} },
+	{ MODKEY,		        Button5, kscrolldown,    {.i = 1} },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
@@ -249,6 +254,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
 	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
+	{ TERMMOD,              XK_K,           zoom,           {.f = +1} },
+	{ TERMMOD,              XK_J,           zoom,           {.f = -1} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },	
@@ -262,8 +269,12 @@ static Shortcut shortcuts[] = {
 //scroll thru page wise	
 	{ MODKEY,		XK_Page_Up,     kscrollup,      {.i = -1} },	
 	{ MODKEY,		XK_Page_Down,   kscrolldown,    {.i = -1} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ ShiftMask,    XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ ShiftMask,    XK_Page_Down,   kscrolldown,    {.i = -1} },
+//external pipe patch...1) open a link(l) 2)yank/copy link (y)  3) copy output (o)
+    { MODKEY,       XK_l,           externalpipe,   {.v = openurlcmd } },
+    { MODKEY,       XK_y,           externalpipe,   {.v = copyurlcmd } },
+    { MODKEY,       XK_o,           externalpipe,   {.v = copyoutput } },
 };
 
 /*
