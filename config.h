@@ -268,13 +268,13 @@ static Shortcut shortcuts[] = {
 	{ MODKEY,		XK_Down,	kscrolldown,	{.i = 1} },	
 //scroll thru page wise	
 	{ MODKEY,		XK_Page_Up,     kscrollup,      {.i = -1} },	
-	{ MODKEY,       XK_Page_Down,   kscrolldown,    {.i = -1} },
-	{ ShiftMask,    XK_Page_Up,     kscrollup,      {.i = -1} },
-    { ShiftMask,    XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ MODKEY,		XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ ShiftMask,		XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ ShiftMask,		XK_Page_Down,   kscrolldown,    {.i = -1} },
 //external pipe patch...1) open a link(l) 2)yank/copy link (y)  3) copy output (o)
-    { MODKEY,       XK_l,           externalpipe,   {.v = openurlcmd } },
-    { MODKEY,       XK_y,           externalpipe,   {.v = copyurlcmd } },
-    { MODKEY,       XK_o,           externalpipe,   {.v = copyoutput } },
+	{ MODKEY,       XK_l,           externalpipe,   {.v = openurlcmd } },
+	{ MODKEY,       XK_y,           externalpipe,   {.v = copyurlcmd } },
+	{ MODKEY,       XK_o,           externalpipe,   {.v = copyoutput } },
 };
 
 /*
