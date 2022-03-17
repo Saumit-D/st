@@ -9,7 +9,6 @@
 //static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
 //static char *font = "OCRA:pixelsize=22:antialias=true:autohint=true";
 static char *font = "UbuntuMono Nerd Font:pixelsize=22:antialias=true:autohint=true";
-//static char *font = "SF Mono:pixelsize=22:antialias=true:autohint=true"
 //static char *font = "JetBrainsMono:pixelsize=22:antialias=true:autohint=true";
 //static char *font = "Terminus:pixelsize=22:antialias=true:autohint=true";
 
@@ -238,7 +237,7 @@ ResourcePref resources[] = {
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
 	{ MODKEY,               Button4, kscrollup,      {.i = 1} },
-	{ MODKEY,		        Button5, kscrolldown,    {.i = 1} },
+	{ MODKEY,               Button5, kscrolldown,    {.i = 1} },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
@@ -269,9 +268,9 @@ static Shortcut shortcuts[] = {
 	{ MODKEY,		XK_Down,	kscrolldown,	{.i = 1} },	
 //scroll thru page wise	
 	{ MODKEY,		XK_Page_Up,     kscrollup,      {.i = -1} },	
-	{ MODKEY,		XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ MODKEY,       XK_Page_Down,   kscrolldown,    {.i = -1} },
 	{ ShiftMask,    XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,    XK_Page_Down,   kscrolldown,    {.i = -1} },
+    { ShiftMask,    XK_Page_Down,   kscrolldown,    {.i = -1} },
 //external pipe patch...1) open a link(l) 2)yank/copy link (y)  3) copy output (o)
     { MODKEY,       XK_l,           externalpipe,   {.v = openurlcmd } },
     { MODKEY,       XK_y,           externalpipe,   {.v = copyurlcmd } },
