@@ -262,9 +262,7 @@ static Shortcut shortcuts[] = {
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 //setting vim and arrow keys to scroll line one by one pressing alt
-	{ MODKEY,		XK_k,		kscrollup,      {.i = 1} },	
 	{ MODKEY,		XK_Up,		kscrollup,      {.i = 1} },	
-	{ MODKEY,		XK_j,		kscrolldown,    {.i = 1} },	
 	{ MODKEY,		XK_Down,	kscrolldown,	{.i = 1} },	
 //scroll thru page wise	
 	{ MODKEY,		XK_Page_Up,     kscrollup,      {.i = -1} },	
